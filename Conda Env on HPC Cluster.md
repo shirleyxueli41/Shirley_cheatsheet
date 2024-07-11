@@ -1,42 +1,29 @@
 # Conda Env on HPC Cluster
 
-
-
-[TOC]
-
-### Allocate Resources
-
-1. Please reference https://tufts.box.com/v/Pax-User-Guide to **start an interactive session** on the cluster on a compute node (execute every time you need to execute/run any programs on the cluster)
-   1. Determine if you need GUI forwarding
-   2. Determine if you need GPU access
-
-2. **Load modules**
-
+## Load modules
    1. Load anaconda module
 
       `$ module load anaconda/2021.05`
 
       or 
    
-       `$ module load anaconda/2021.11`
-   
-      or any newer versions of anaconda shown in the output of `$ module av anaconda`
+       `$ module load anaconda/2021.11`  
+      or
+      
+       `$ module load miniconda/23.10`             
    
       NOTE: `anaconda/3` and `anaconda/2` are very old versions. 
    
-   2. Load other modules needed (such as `$ module load cuda/11.0`)
+   3. Load other modules needed         
+      `$ module load conda-env-mod/default`   
 
-### Configure your conda n
+### Configure your conda 
 
-***NOTE (steps in this session only needs to be executed ONCE)***
+Two directories in your group research storage space (one for storing the envs, one for storing the pkgs, for example: condaenv, condapkg)
 
-Since you have limited amount of storage in your home directory, we do no suggest you install the packages there. As you belong to XXXXlab group on the cluster, please use the group research storage for the purpose. 
+`$ mkdir /cluster/tufts/xli37/software/condaenv/`
 
-Create two directories in your group research storage space (one for storing the envs, one for storing the pkgs, for example: condaenv, condapkg)
-
-`$ mkdir /cluster/tufts/XXXXlab/$USER/condaenv/`
-
-`$ mkdir /cluster/tufts/XXXXlab/$USER/condapkg/`
+`$ mkdir /cluster/tufts/xli37/software/condapkg/`
 
 If you haven't used conda before on the cluster, create a file named ".condarc" in your home directory. 
 
@@ -44,24 +31,10 @@ Now add the following 4 lines to the `.condarc` file in your home directory (mod
 
 ```
 envs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condaenv/
+  - /cluster/tufts/xli37/software/condaenv/
 pkgs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condapkg/
+  - /cluster/tufts/xli37/software/condapkg/
 ```
-
-**OR** you can do so from command line with the following commands 
-
-`$ conda config --append envs_dirs /cluster/tufts/XXXXlab/$USER/condaenv/`
-
-`$ conda config --append pkgs_dirs /cluster/tufts/XXXXlab/$USER/condapkg/`
-
-***(only add 4 lines to the .condarc file OR use these commands, NOT BOTH)***
-
-Optional: Add channels to your conda config as well (here are only 2, but you can add more you need):
-
-`$ conda config --add channels bioconda`
-
-`$ conda config --add channels conda-forge`
 
 After this, your `.condarc`file should look like this
 
@@ -69,9 +42,10 @@ After this, your `.condarc`file should look like this
 
 ```
 envs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condaenv/
+  - /cluster/tufts/xli37/software/condaenv/
 pkgs_dirs:
-  - /cluster/tufts/XXXXlab/$USER/condapkg/
+  - /cluster/tufts/xli37/software/condapkg/
+
 channels:
   - bioconda
   - conda-forge
@@ -82,13 +56,13 @@ channels:
 
 Now you can create your own conda env
 
-`$ cd /cluster/tufts/XXXXlab/$USER/condaenv/`
+`$ cd /cluster/tufts/xli37/software/condaenv/`
 
-`$ conda create -p yourenvname`
+`$ conda create -p bio_test`
 
 or if you have a specific version of python you need to use, e.g. 3.8
 
-`$ conda create -p yourenvname python=3.8` (Recommended!)
+`$ conda create -p bio_test python=3.8` (Recommended!)
 
 Note: you will need to have `python` and `pip` installed inside the env to pip install packages inside the env.
 
