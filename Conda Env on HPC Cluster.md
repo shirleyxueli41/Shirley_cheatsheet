@@ -126,3 +126,12 @@ If you would like to use JupyterNotebook or JupyterLab from OnDemand, you can fo
 
     - :)
 
+### Create your conda environment with conda-env-mod
+
+
+`$ cd /cluster/tufts/xli37/software/condaenv/`
+
+`$ conda-env-mod create -p bio_test python=3.8  --jupyter`
+
+
+
