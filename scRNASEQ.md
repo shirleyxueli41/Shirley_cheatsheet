@@ -9,3 +9,6 @@
 
 ## Scanpy Basic Usage
 [Tutorial](https://scanpy.readthedocs.io/en/stable/tutorials/basics/clustering.html)
+
+## Scverse: Foundational tools for single-cell omics data analysis
+[Website](https://scverse.org/learn/)
