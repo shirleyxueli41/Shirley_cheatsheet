@@ -13,7 +13,7 @@ Here are the steps to connect to the Tufts HPC using an SSH key:
 
 Detailed steps for setting up SSH key on different operating systems are given below.
 
-### Mac, Linux, and  Windows Subsystem for Linux (WSL) :
+### Steps (Mac) :
 
 1. Run `ssh-keygen` in the terminal on your local computer. You can choose to provide a filename and a passphrase to protect your private key, but it's not mandatory. To use the default settings, simply press Enter without specifying a filename. 
 
